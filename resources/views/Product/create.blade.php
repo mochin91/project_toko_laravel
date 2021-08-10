@@ -11,24 +11,50 @@
                              alt="preview image" style="max-height: 25rem;">
                     </div>
                     <input type="file" name="image" id="image">
+                    <br/>
+                    @error('image')
+                    <span class="text-danger">
+                                {{ $message }}
+                            </span>
+                    @enderror
                 </div>
                 <div class="col-md-6">
                     <div class="row g-3">
                         <div class="col-md-12">
                             <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" name="name">
+                            <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}">
+                            @error('name')
+                            <span class="text-danger">
+                                {{ $message }}
+                            </span>
+                            @enderror
                         </div>
                         <div class="col-md-6">
                             <label for="category" class="form-label">Category</label>
-                            <input type="text" class="form-control" id="category" name="category">
+                            <input type="text" class="form-control" id="category" name="category" value="{{old('category')}}">
+                            @error('category')
+                            <span class="text-danger">
+                                {{ $message }}
+                            </span>
+                            @enderror
                         </div>
                         <div class="col-6">
                             <label for="price" class="form-label">Price</label>
-                            <input type="number" class="form-control" id="price" name="price">
+                            <input type="number" class="form-control" id="price" name="price" value="{{old('price')}}">
+                            @error('price')
+                            <span class="text-danger">
+                                {{ $message }}
+                            </span>
+                            @enderror
                         </div>
                         <div class="col-12">
                             <label for="description" class="form-label">Description</label>
-                            <textarea class="form-control" id="description" name="description" rows="7"></textarea>
+                            <textarea class="form-control" id="description" name="description" rows="7">{{old('description')}}</textarea>
+                            @error('description')
+                            <span class="text-danger">
+                                {{ $message }}
+                            </span>
+                            @enderror
                         </div>
                         <div class="col-12">
                             <div class="d-flex justify-content-end">

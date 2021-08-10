@@ -21,6 +21,6 @@ Route::get('/', function () {
 Route::get('/', [HomeController::class,'index']);
 Route::get('/Product/details/{slug}', [ProductController::class,'details']);
 Route::get('/Product/index', [ProductController::class,'index']);
-Route::get('/Product/create', [ProductController::class, 'create']);
+Route::get('/Product/create', [ProductController::class, 'create'])->middleware(['auth','is_admin']);
 Route::post('/Product', [ProductController::class,'store']);
 

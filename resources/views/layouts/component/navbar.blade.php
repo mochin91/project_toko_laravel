@@ -13,15 +13,19 @@
                 <li class="nav-item">
                     <a class="nav-link " href="/Product/index">Products</a>
                 </li>
+                @if(!is_null(Auth::user()) && Auth::user()->role != 'admin')
                 <li class="nav-item">
                     <a class="nav-link " href="#">Order</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="/Product/create">Tambah Product</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="#">List Order</a>
-                </li>
+{{--                @dd(Auth::user())--}}
+                @elseif(!is_null(Auth::user()) && Auth::user()->role == 'admin')
+                    <li class="nav-item">
+                        <a class="nav-link " href="/Product/create">Tambah Product</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="#">List Order</a>
+                    </li>
+                @endif
                 @guest
                     <a class="btn btn-outline-light me-2" href="{{route('login')}}">Login</a>
                     <a class="btn btn-warning me-2" href="{{route('register')}}">Sign Up</a>

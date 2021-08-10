@@ -58,10 +58,18 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => ['required','unique:products','max:255'],
+            'category'=> ['required'],
+            'price'=> ['required','min:0','max:10'],
+            'description' => ['required'],
+            'image' => ['required','file']
+        ]);
         //
         $slug = str_replace(" ", "-", $request->name);
         $picture_path = $request->file('image')->store('public/img/product');
         //@ddd(($picture_path));
+
 
         Product::create([
             'slug' => $slug,
@@ -120,4 +128,5 @@ class ProductController extends Controller
     {
         //
     }
+
 }

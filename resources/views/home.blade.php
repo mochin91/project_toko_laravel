@@ -2,6 +2,9 @@
 
 @section('container')
     <div class="container-fluid" style="margin-top:6rem">
+        @if(!is_null(Auth::user()) && Auth::user()->role == 'admin')
+            <H1>ADMIN PAGE</H1>
+        @else()
         {{-- carousel --}}
 {{--        <div id="carouselExampleIndicators" class="carousel slide carousel-fade shadow-lg" data-bs-ride="carousel">--}}
 {{--            <div class="carousel-inner">--}}
@@ -53,5 +56,6 @@
             </div>
         </section>
         {{-- end of Products --}}
+        @endif
     </div>
 @endsection
