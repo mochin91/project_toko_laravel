@@ -23,7 +23,6 @@ class ProductFactory extends Factory
     {
         return [
             //
-            'product_id' => $this->faker->numerify('PD########'),
             'slug' => $this->faker->slug(),
             'name' => $this->faker->sentence(mt_rand(2,3)),
             'category' => $this->faker->sentence(1),
