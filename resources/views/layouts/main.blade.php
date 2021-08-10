@@ -12,39 +12,7 @@
 </head>
 <body>
 
-{{-- navbar --}}
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-danger bg-gradient">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/"><img src="{{url('/img/mrg.png')}}" alt="Logo Toko" width="150"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link " aria-current="page" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="/Product/index">Products</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="#">Order</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="/Product/create">Tambah Product</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="#">List Order</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="#">Admin</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-{{-- end of navbar --}}
-
+@include('layouts.component.navbar')
 
 <div class="container-fluid" style="margin-top:6rem">
     @yield('container')
