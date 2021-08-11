@@ -11,21 +11,32 @@
                 <div class="card-body pb-5">
                     <h5 class="card-title fw-bolder">{{ $product->name }}</h5>
                     <p class="card-text text-danger fw-bolder"> Rp. {{ number_format($product->price,0) }}</p>
-                    <p class="card-text fw-bolder"> Category : <a href="">{{ ($product->category) }}</a></p>
+                    <p class="card-text fw-bolder"> Category : {{ ($product->category) }}</p>
                     <p class="card-text fw-bolder"> {{ ($product->description) }}</p>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="input-group flex-nowrap">
-                                <span class="input-group-text" id="addon-wrapping">Qty</span>
-                                <input type="number" class="form-control" aria-label="Username" aria-describedby="addon-wrapping" value="0">
+                    <form action="{{url('/Chart')}}" method="POST">
+                        @csrf
+                        <div class="row">
+                            <input type="hidden" name="product_id" value="{{$product->id}}">
+                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                            <input type="hidden" name="email" value="{{Auth::user()->email}}">
+                            <div class="col-md-6">
+                                <div class="input-group flex-nowrap">
+                                    <span class="input-group-text" id="addon-wrapping">Qty</span>
+                                    <input type="number" class="form-control" name="qty" value="0">
+                                </div>
+                                @error('qty')
+                                <span class="text-danger">
+                                    {{$message}}
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-danger w-100">Add to Chart</button>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="d-flex justify-content-end">
-                                <button type="submit" class="btn btn-danger w-100">Buy</button>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

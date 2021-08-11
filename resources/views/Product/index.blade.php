@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-    <div class="container-fluid" style="margin-top:6rem">
+    <div class="container" style="margin-top:6rem">
         {{-- Products --}}
         <section id="Products">
             <div class="row mt-3 ms-3 mb-3">

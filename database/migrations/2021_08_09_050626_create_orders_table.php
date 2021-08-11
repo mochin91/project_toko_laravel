@@ -17,11 +17,11 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('order_id')->unique();
             $table->foreignId('user_id');
-            $table->string('slug')->unique();
+//            $table->string('slug')->unique();
             $table->decimal('grand_total',10,0);
             $table->boolean('paid');
             $table->string('upload_payment_path');
-            $table->timestamp('order_date');
+//            $table->timestamp('order_date');
             $table->boolean('status');
             $table->timestamps();
         });

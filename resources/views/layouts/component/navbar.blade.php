@@ -11,19 +11,25 @@
                     <a class="nav-link " aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="/Product/index">Products</a>
+                    <a class="nav-link " href="{{url('Product/index')}}">Products</a>
                 </li>
                 @if(!is_null(Auth::user()) && Auth::user()->role != 'admin')
                 <li class="nav-item">
-                    <a class="nav-link " href="#">Order</a>
+                    <a class="nav-link " href="{{url('Chart/'.Auth::user()->email??'')}}">Chart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="{{url('Order/'.Auth::user()->email??'')}}">Order</a>
                 </li>
 {{--                @dd(Auth::user())--}}
                 @elseif(!is_null(Auth::user()) && Auth::user()->role == 'admin')
                     <li class="nav-item">
-                        <a class="nav-link " href="/Product/create">Tambah Product</a>
+                        <a class="nav-link " href="{{url('Product/create')}}">Tambah Product</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="#">List Order</a>
+                        <a class="nav-link " href="{{url('All/Order')}}">List Order</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{url('User/index')}}">List User</a>
                     </li>
                 @endif
                 @guest
