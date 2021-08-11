@@ -111,4 +111,17 @@ class OrderController extends Controller
             'order' => $order,
         ]);
     }
+
+    public function uploadPembayaran(Request $request)
+    {
+        $request->validate([
+            'image'=>['required','file'],
+        ]);
+//        ddd($request->file('image'));
+        $picture_path = $request->file('image')->store('public/img/pembayaran');
+        DB::table('orders')->where('id',$request->orderId)->update(['upload_payment_path'=>$picture_path]);
+        DB::table('orders')->where('id',$request->orderId)->update(['paid'=>true]);
+
+        return redirect(url("/Detail/Order/$request->orderId"));
+    }
 }

@@ -23,11 +23,12 @@ Route::get('/', function () {
     return view('home');
 });
 
-//product
-
+//home
 Route::get('/', [HomeController::class,'index']);
-Route::get('/Product/details/{slug}', [ProductController::class,'details']);
-Route::get('/Product/index', [ProductController::class,'index']);
+
+//product
+Route::get('/Product/details/{slug}', [ProductController::class,'details'])->middleware(['auth']);
+Route::get('/Product/index', [ProductController::class,'index'])->middleware(['auth']);
 Route::get('/Product/create', [ProductController::class, 'create'])->middleware(['auth','is_admin']);
 Route::post('/Product', [ProductController::class,'store']);
 
@@ -35,10 +36,11 @@ Route::post('/Product', [ProductController::class,'store']);
 Route::get('User/index', [UserController::class, 'index'])->middleware(['auth','is_admin']);
 
 //Order
-Route::get('Order/{email}',[OrderController::class,'index']);
-Route::get('All/Order',[OrderController::class,'all']);
-Route::get('Detail/Order/{id}',[OrderController::class,'showDetails']);
+Route::get('Order/{email}',[OrderController::class,'index'])->middleware(['auth']);
+Route::get('All/Order',[OrderController::class,'all'])->middleware(['auth']);
+Route::get('Detail/Order/{id}',[OrderController::class,'showDetails'])->middleware(['auth']);
 Route::post('Order', [OrderController::class,'store']);
+Route::patch('uploadPembayaran',[OrderController::class,'uploadPembayaran']);
 
 //chart
 Route::get('Chart/{email}',[ProductUserController::class,'index'])->middleware(['auth']);
